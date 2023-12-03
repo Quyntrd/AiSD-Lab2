@@ -19,11 +19,7 @@ endif()
 
 
 # Объявляем библиотеку
-add_library(LinkedList-v1 SHARED
-    "include/LinkedList.h"
-    "src/LinkedList.cpp"
-
-)
+add_library(LinkedList-v1 SHARED "include/LinkedList.cpp")
 target_include_directories(LinkedList-v1 PUBLIC "include")
 
 add_executable(LinkedList-v1-main  "app/main.cpp" )
