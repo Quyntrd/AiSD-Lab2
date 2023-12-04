@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <iostream>
+#include <random>
 #include <cmath>
 
 template<class Data>
@@ -22,6 +23,15 @@ public:
 			temp = temp->next;
 		}
 	};
+	LinkedList(int size, Data up, Data low) {
+		int count = 0;
+		_head = new Node();
+		_head->next = _head;
+		while (count != size) {
+			push_tail(low + static_cast<Data>(rand()) / (static_cast<Data>(RAND_MAX) / (up - low)));
+			count++;
+		}
+	}
 	~LinkedList() {
 		Node* temp = _head;
 		while (temp->next != _head) {
@@ -33,6 +43,15 @@ public:
 			_head = _head->next;
 			delete count;
 		}
+	};
+	int get_size() const{
+		Node* temp = _head->next;
+		int size = 0;
+		while (temp != _head) {
+			temp = temp->next;
+			size++;
+		}
+		return size;
 	};
 	LinkedList& operator+=(const LinkedList& second) {
 		int len1 = 0, len2 = 0;
@@ -172,4 +191,12 @@ public:
 	}
 };
 
-
+template <class Data>
+Data calculate_polynomial(const LinkedList<Data> list, const Data number) {
+	int result = 0;
+	int size = list.get_size();
+	for (int i = 0; i < size; i++) {
+		result += list[i] * pow(number, i);
+	}
+	return result;
+}

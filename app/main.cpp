@@ -35,19 +35,34 @@ int main() {
 	cout << "5: " << "\t";
 	cout << list1 << endl;
 
+	int result = calculate_polynomial(list1, 2);
+	cout << "Test:" << result << endl;
+
 	LinkedList<int> list2;
 	list2.push_head(10);
 	list2.push_head(5);
 	list2.push_head(4);
 	cout << "6: " << "\t";
 	cout << list2 << endl;
+
+	result = calculate_polynomial(list2, 2);
+	cout << "Test:" << result << endl;
+
 	int temp = list2[0];
 	cout << temp << "\t";
 	temp = list2[1];
 	cout << temp << "\t";
 	temp = list2[2];
 	cout << temp << endl;
+
 	list2[0] = 20;
-	cout << "7:" << "\t";
+	cout << "7: " << "\t";
 	cout << list2 << endl;
+
+	result = calculate_polynomial(list2, 1);
+	cout << "Test:" << result << endl;
+
+	LinkedList<double> list3(10, 10.0, 1.0);
+	cout << "8: " << "\t";
+	cout << list3 << endl;
 }
