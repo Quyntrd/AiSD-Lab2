@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <iostream>
+#include <cmath>
 
 template<class Data>
 class LinkedList {
@@ -70,9 +71,9 @@ public:
 		while (temp != _head) {
 			if (count == index) {
 				return temp->data;
-				temp = temp->next;
-				count++;
 			}
+			temp = temp->next;
+			count++;
 		}
 		throw std::out_of_range("Out of range");
 	};
@@ -85,9 +86,9 @@ public:
 		while (temp != _head) {
 			if (count == index) {
 				return temp->data;
-				temp = temp->next;
-				count++;
 			}
+			temp = temp->next;
+			count++;
 		}
 		throw std::out_of_range("Out of range");
 	};
@@ -150,16 +151,25 @@ public:
 	friend std::ostream& operator<<(std::ostream& stream, const LinkedList& list) {
 		Node* temp = list._head->next;
 		int count = 0;
-		while (temp != list._head) {
+		while (temp->next != list._head) {
 			if (temp->data == 0) {
 				temp = temp->next;
 				count++;
 				continue;
 			}
-			stream << temp->data<< "x^"<< count << "\t";
+			if (count == 0) {
+				stream << temp->data << " + ";
+				count++;
+				temp = temp->next;
+				continue;
+			}
+			stream << temp->data << "x^" << count << " + ";
 			count++;
 			temp = temp->next;
 		}
+		stream << temp->data << "x^" << count;
 		return stream;
 	}
 };
+
+
