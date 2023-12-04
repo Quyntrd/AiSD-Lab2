@@ -27,7 +27,7 @@ public:
 		while (temp->next != _head) {
 			temp = temp->next;
 		}
-		temp = nullptr;
+		temp->next = nullptr;
 		while (_head) {
 			Node* count = _head;
 			_head = _head->next;
@@ -35,7 +35,7 @@ public:
 		}
 	};
 	LinkedList& operator+=(const LinkedList& second) {
-		int len1, len2 = 0;
+		int len1 = 0, len2 = 0;
 		Node* temp1 = _head->next;
 		Node* temp2 = second._head->next;
 		while (temp1 != _head) {
@@ -47,7 +47,7 @@ public:
 			len2++;
 		}
 		if (len1 != len2) {
-			throw std::runtime_error("Different sizes of lists")
+			throw std::runtime_error("Different sizes of lists");
 		}
 		temp1 = _head->next;
 		temp2 = second._head->next;
@@ -152,8 +152,10 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& stream, const LinkedList& list) {
 		Node* temp = list._head->next;
+		int count = 0;
 		while (temp != list._head) {
-			stream << temp->data << "\t";
+			stream << temp->data<< "x^"<< count << "\t";
+			count++;
 			temp = temp->next;
 		}
 		return stream;
