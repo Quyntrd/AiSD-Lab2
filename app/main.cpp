@@ -65,4 +65,12 @@ int main() {
 	LinkedList<double> list3(10, 10.0, 1.0);
 	cout << "8: " << "\t";
 	cout << list3 << endl;
+
+	list1.push_head(list2);
+	cout << "9: " << "\t";
+	cout << list1 << endl;
+
+	list1 += list1;
+	cout << "10: " << "\t";
+	cout << list1 << endl;
 }
