@@ -8,8 +8,7 @@ class LinkedList {
 		Data data;
 		Node* next;
 	};
-	Node* _head = nullptr;
-
+	Node* _head;
 public:
 	LinkedList() {
 		_head = new Node();
@@ -62,7 +61,6 @@ public:
 		LinkedList new_list(*this += second);
 		return new_list;
 	};
-	
 	Data& operator[](const int index) {
 		if (index < 0) {
 			throw std::out_of_range("Out of range");
@@ -93,7 +91,6 @@ public:
 		}
 		throw std::out_of_range("Out of range");
 	};
-
 	void push_tail(const Data& data) {
 		Node* new_node = new Node();
 		new_node->data = data;
@@ -145,15 +142,20 @@ public:
 				Node* deleted = temp->next->next;
 				delete temp->next;
 				temp->next = deleted;
+				continue;
 			}
 			temp = temp->next;
 		} while (temp != _head);
 	};
-
 	friend std::ostream& operator<<(std::ostream& stream, const LinkedList& list) {
 		Node* temp = list._head->next;
 		int count = 0;
 		while (temp != list._head) {
+			if (temp->data == 0) {
+				temp = temp->next;
+				count++;
+				continue;
+			}
 			stream << temp->data<< "x^"<< count << "\t";
 			count++;
 			temp = temp->next;
