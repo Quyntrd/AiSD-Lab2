@@ -135,9 +135,15 @@ public:
 		new_node->next = _head->next;
 		_head->next = new_node;
 	};
-	void push_head(const LinkedList list) {
+	void push_head(const LinkedList list) { //Переделать
 		Node* temp = list._head->next;
+		LinkedList<Data> temp_list;
 		while (temp != list._head) {
+			temp_list.push_head(temp->data);
+			temp = temp->next;
+		}
+		temp = temp_list._head->next;
+		while (temp != temp_list._head) {
 			this->push_head(temp->data);
 			temp = temp->next;
 		}

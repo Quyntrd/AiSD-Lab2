@@ -62,10 +62,10 @@ int main() {
 	result = calculate_polynomial(list2, 1);
 	cout << "Test:" << result << endl;
 
-	LinkedList<double> list3(10, 10.0, 1.0);
+	LinkedList<double> list3(10, 100.0, 1.0);
 	cout << "8: " << "\t";
 	cout << list3 << endl;
-	double res = calculate_polynomial(list3, 2.0);
+	double res = calculate_polynomial(list3, 1.1);
 	cout << "Test: " << res << endl;
 
 	list1.push_head(list2);
@@ -75,4 +75,11 @@ int main() {
 	list1 += list1;
 	cout << "10: " << "\t";
 	cout << list1 << endl;
+
+
+	LinkedList<int> list5(10, 100, 10);
+	LinkedList<int> list4;
+	list4.push_head(list5);
+	cout << "list1 " << list5 << endl;
+	cout << "list4 " << list4 << endl;
 }
