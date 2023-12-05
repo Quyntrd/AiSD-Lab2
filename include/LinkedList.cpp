@@ -193,7 +193,7 @@ public:
 
 template <class Data>
 Data calculate_polynomial(const LinkedList<Data> list, const Data number) {
-	int result = 0;
+	Data result = 0;
 	int size = list.get_size();
 	for (int i = 0; i < size; i++) {
 		result += list[i] * pow(number, i);

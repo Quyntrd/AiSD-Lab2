@@ -65,6 +65,8 @@ int main() {
 	LinkedList<double> list3(10, 10.0, 1.0);
 	cout << "8: " << "\t";
 	cout << list3 << endl;
+	double res = calculate_polynomial(list3, 2.0);
+	cout << "Test: " << res << endl;
 
 	list1.push_head(list2);
 	cout << "9: " << "\t";
